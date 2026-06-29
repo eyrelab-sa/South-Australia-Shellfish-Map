@@ -2,14 +2,14 @@
 
 **An interactive reference map consolidating native bivalve presence data, historical reef records, restoration program sites, and community science observations across South Australia's gulf systems.**
 
-Built by [Eyre Lab](https://www.eyrelab.org/) Educating Youth in Restoration Ecology.
+Built by [Eyre Lab](https://www.eyrelab.org/), Educating Youth in Restoration Ecology.
 Field survey data collected by Brian Arruda and Manny Katz.
 
 ---
 
 ## Live map
 
-Open `oyster_site_map.html` in any modern browser — no server required. The file is fully self-contained (all assets and data are embedded).
+🗺️ **[Open the map](https://eyrelab-sa.github.io/South-Australia-Shellfish-Map/)**
 
 ---
 
