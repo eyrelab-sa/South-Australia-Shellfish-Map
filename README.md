@@ -1,9 +1,8 @@
 # Gulf Beds — Shellbed Atlas of South Australia
 
-**An interactive reference map consolidating native bivalve presence data, historical reef records, restoration program sites, and community science observations across South Australia's gulf systems.**
+**An interactive reference map consolidating native bivalve presence data, historical reef records, active restoration sites, marine park boundaries, and community science observations across South Australia's gulf systems.**
 
-Built by [Eyre Lab](https://www.eyrelab.org/), Educating Youth in Restoration Ecology.
-Field survey data collected by Brian Arruda and Manny Katz.
+Built for [Eyrelab](https://www.eyrelab.org/ourmission), a registered South Australian environmental charity headquartered on the Eyre Peninsula, founded and directed by Emmanuel "Manny" Katz. Developed and maintained by Brian Arruda, researcher at Eyrelab and lead steward of this map. Eyrelab acknowledges the Nauo people as Traditional Owners of the waters this work takes place in.
 
 ---
 
@@ -13,186 +12,206 @@ Field survey data collected by Brian Arruda and Manny Katz.
 
 ---
 
-## What the map shows
+## Purpose
 
-The map layers four types of data:
+This is a working research and communication tool, not a regulatory product. It exists to answer one underlying question across four stages: what shellfish reef habitat existed historically, what's confirmed present today, what restoration is actively rebuilding, and what biodiversity is recolonising as a result.
 
-### Field surveys — Eyre Lab
+## How the map is organised
 
-In-water dive and snorkel assessments conducted by Eyre Lab volunteers in support of an independent _Ostrea angasi_ genetics research project. Sites are on the Eyre Peninsula, Streaky Bay, and Ceduna coastlines.
+The layer panel is a narrative arc, not a flat list of toggles:
 
-**Species tracked:**
-| Key | Latin name | Notes |
-|-----|-----------|-------|
-| `angasi` | _Ostrea angasi_ | Flat / mud / Port Lincoln oyster |
-| `hammerOyster` | _Malleus meridianus_ | Southern hammer oyster |
-| `razorfish` | _Pinna bicolor_ | Pen shell / razor fish |
-| `cockle` | _Katelysia spp._ | Venus clam (_K. scalarina_, _K. rhytiphora_) |
-| `scallop` | _Equichlamys bifrons_ | Southern bay scallop |
-| `nativeMussel` | _Brachidontes / Mytilus spp._ | Taxonomically unresolved — see caveats |
+1. **Historical record** — pre-collapse reef sites and species presence, digitised from peer-reviewed literature (Martin et al. 2025, Gillies et al. 2018).
+2. **Modern presence** — current field surveys and published research confirming where species exist today (Eyrelab 2026 field surveys, Lindsey et al. 2026 Coffin Bay research).
+3. **Active restoration** — reef-building programs currently underway across SA (Eyrelab's 25 Reefs, and the separate SA Government / TNC program).
+4. **Reef biodiversity recovery** — community and citizen-science observations (iNaturalist, verified community sightings) showing what's recolonising restored and remnant habitat.
 
-**Status tiers:**
+Within stages 2 and 4, species are split by role:
 
-- **Present** — confirmed in-water positive ID
-- **Uncertain** — shell material, shore visual, or secondhand report
-- **Absent** — in-water survey, species not detected
-- **No data** — site not assessed for that species (≠ absent)
+- **Tier 1 — reef-building species**: _Ostrea angasi_, _Malleus meridianus_, _Pinna dolabrata_. These are the structural focus of the project — the species whose reefs are being restored and whose recruitment is the primary success metric. They appear at every stage.
+- **Tier 2 — associated reef biodiversity**: _Katelysia_ spp., _Equichlamys bifrons_. Not reef-builders themselves, but their presence indicates reef recovery and habitat quality. Shown at reduced visual prominence and off by default.
 
-**Map encoding:** Shape identifies species (your SVG icons). Fill colour encodes status (green / amber / white+slash / gray). Stroke / border colour also identifies species — it persists regardless of status so the species is always readable. Gold halo = recruitment (juveniles/spat) confirmed.
+Marine parks and aquaculture leases sit outside the four-stage arc as spatial/regulatory context layers (see below).
 
-### Restoration programs — 25 Reefs Project
-
-Active and proposed _Ostrea angasi_ reef restoration sites across SA. 20 sites total. Sites with confirmed recruitment are marked. Sites with `approximate: true` have centroid-level coordinates only.
-
-**Sites with links:**
-
-- [Glenelg Reef](https://www.google.com/maps/place/Glenelg+Shellfish+Reef/@-34.9727278,138.4951943,1178m/)
-- [Windara Reef](https://www.researchgate.net/figure/Australias-first-large-scale-oyster-reef-restoration-project-Windara-Reef-is-located_fig1_343076485)
-- [Kingscote Reef](https://www.landscape.sa.gov.au/ki/native-plants-and-animals/supporting-biodiversity/oyster-reef-restoration)
-
-### Historical layers — Martin et al. 2025
-
-Digitised historical shellfish reef positions from the peer-reviewed literature.
-
-> Martin, B., Huveneers, C., Reeves, S. & Baring, R. (2025). Reviving shellfish reef socio-ecological histories for modern management and restoration. _Ocean & Coastal Management_ 261:107540.
-
-**Source file:** `martin_2025_shellfish_reef_sites.csv` (extracted from paper supplementary mmc2.xlsx).
-
-Filters applied in this map:
-
-- _O. angasi_: high-confidence records, ≤1950 or undated only
-- _P. bicolor_, _M. meridianus_: high-confidence, no date cutoff (too few records to filter further)
-
-**Known data issue:** Gillies et al. 2018 Table 1 lists _P. bicolor_ distribution as WA/NT/QLD/NSW (omitting SA), but the same paper's body text and Comments column confirm SA gulf occurrence. Martin et al. 2025 coordinates are used here and are considered reliable.
-
-### Historical layers — Gillies et al. 2018
-
-Historical harvest evidence, aquaculture locations, and oyster-related place names, filtered to the SA bounding box.
-
-> Gillies, C.L., et al. (2018). Australian shellfish ecosystems: Past distribution, current status and future direction. _PLoS ONE_ 13(2):e0190914.
-
-**Source:** Figshare dataset 5766144. Species not differentiated in this dataset (_O. angasi_ and _S. glomerata_ combined).
-
-**Evidence tiers (harvest layer):**
-
-- Tier 1: locality name only
-- Tier 2: + historical harvest record _(sheet unlabeled in source — tier inferred by numeric reconciliation)_
-- Tier 3: + current/historical aquaculture use
-
-**Source files:** `gillies_2018_harvest_SA.csv`, `gillies_2018_aqua_SA.csv`, `gillies_2018_names_SA.csv`
-
-### Community science — iNaturalist
-
-All research-grade _Ostrea angasi_ observations from iNaturalist, SA bounding box, exported 2026-06-28.
-
-**Source file:** `inat_ostrea_angasi_research_grade.csv` (4,429 records, 2011–2026).
-
-**Geographic note:** ~3,900 records are in the Adelaide metro area. The Eyre Peninsula has only ~47 records — this reflects observer effort on iNaturalist, not population abundance. Do not interpret record density as a proxy for reef density.
-
-Each map marker links directly to the individual iNaturalist observation page.
+**There is no Change & Disturbance / historic-vs-modern comparison layer on this map as of July 2026.** It existed earlier in the project but was removed — the methodology wasn't reliable enough to stand behind. A separate standalone tool (`historic_vs_modern_comparison.html`, not part of this repo's `index.html`) now handles that comparison per-species with proper source attribution; it is not embedded here.
 
 ---
 
-## How to use the map
+## Interactivity
 
-| Control               | Location                   | Function                                                                               |
-| --------------------- | -------------------------- | -------------------------------------------------------------------------------------- |
-| **Layers** button     | Top right                  | Toggle all data layers on/off                                                          |
-| **Info panel**        | Left side                  | Shows source info for the active layer; opens automatically when a layer is toggled on |
-| **Species lens row**  | In the field surveys panel | Switch between species to re-colour and re-shape all survey markers                    |
-| **Status filters**    | Below lens row             | Show/hide markers by status (Present / Uncertain / Absent / No data)                   |
-| **Satellite / Ocean** | Header                     | Switch basemap between Esri satellite and GEBCO ocean bathymetry                       |
-| **About this map**    | Header                     | Full methodology notes, data source descriptions, and limitations                      |
-| **+ Add site**        | Survey panel footer        | Click to enter placement mode, then click the map to add a new field site              |
+The map is built on Leaflet.js and is fully interactive out of the box:
+
+- **Pan / zoom** — scroll wheel, +/− buttons, or pinch on touch devices. Marker clustering (iNaturalist and Lindsey layers) expands automatically as you zoom in.
+- **Click any marker** — opens a popup with site name, source, status, evidence tier, or (for iNaturalist points) a direct link to the original observation page.
+- **Layers panel (top right)** — toggle each data layer independently. Toggling a layer on auto-opens an info panel on the left summarising its source, record count, and caveats.
+- **Species lens row** (in the field surveys panel) — re-colours and re-shapes all survey markers to the selected species without reloading the map.
+- **Status filters** — show/hide field survey markers by Present / Uncertain / Absent / No data.
+- **Basemap toggle** (header) — switch between Esri satellite imagery and an ocean/bathymetry basemap.
+- **+ Report sighting** (top centre) — click-to-place mode for submitting a new community observation; pending review before it shows as verified.
+- **About this map** (header) — the full methodology, source list, and limitations shown in-app, mirrored in this README.
+
+---
+
+## Reading the markers
+
+Every _O. angasi_-related marker uses the same shell icon (species = shape) across all layers — field surveys, restoration sites, research data, community sightings. Other species use their own distinct shell shapes. Status and context are layered on top via opacity and rings, not colour swaps:
+
+| Encoding                        | Meaning                                                    |
+| ------------------------------- | ---------------------------------------------------------- |
+| Full opacity                    | Confirmed present / active site                            |
+| 55% opacity                     | Uncertain or indirect evidence (field surveys only)        |
+| No icon                         | Absent or not yet surveyed                                 |
+| Gold halo ring                  | Recruitment (juveniles/spat) confirmed                     |
+| Solid / dashed teal ring        | Sanctuary Zone vs Control site (Lindsey et al. layer only) |
+| Solid green / dashed amber ring | Verified vs pending community sighting                     |
+
+Marine park polygons use a flat blue outline with light fill — no status ring system, since a park boundary doesn't carry a presence/absence state. Aquaculture leases use solid fill for Active status, dashed outline for Application/Pending/Rejected.
+
+---
+
+## Data layers and sources
+
+### Field surveys — Eyrelab, 2026
+
+In-water dive and snorkel assessments by Brian Arruda and Manny Katz, volunteering with Eyrelab, conducted in support of an independent researcher's _O. angasi_ genetics work. Sites span the Eyre Peninsula, Streaky Bay, Ceduna, and Whyalla.
+
+**Assessment methods:** in-water (dive/snorkel, primary evidence), shore visual (intertidal only — does not confirm subtidal absence), secondhand (always recorded Uncertain).
+
+**Status definitions:** Present = in-water positive ID. Uncertain = indirect evidence. Absent = negative in-water survey. No data = not yet assessed (≠ Absent).
+
+### Research data — Lindsey et al. (2024 fieldwork, published 2026)
+
+> Lindsey, N., Connell, S.D., Katz, E. & McAfee, D. (2026). Community-based marine restoration to generate social licence and ecological knowledge for upscaling oyster reef restoration. _People and Nature_ 8:301–315. [doi:10.1002/pan3.70211](https://doi.org/10.1002/pan3.70211)
+
+Eight Coffin Bay sites (4 Sanctuary Zones, 4 Controls), all confirming _O. angasi_ recruitment via shell-basket restoration units deployed January–April 2024.
+
+### Active restoration — Eyrelab's 25 Reefs Project
+
+Statewide restoration program led by Eyrelab: cleaned oyster shell secured in biodegradable mesh, deployed in ~1-hectare units at sites with existing native oyster populations, built largely through community working-bees. First ecological results are expected ~5 years post-deployment. See [eyrelab.org/25-reefs](https://www.eyrelab.org/25-reefs).
+
+### Active restoration — SA Government / The Nature Conservancy
+
+A separate, larger-scale restoration program — distinct in funding, scale, and governance from Eyrelab's 25 Reefs — run by the [SA Government](https://www.environment.sa.gov.au/topics/coasts/rebuilding-sa-lost-shellfish-reefs) in partnership with The Nature Conservancy, University of Adelaide, and local councils, covering Windara, Glenelg, O'Sullivan Beach, and Nepean Bay.
+
+### Historical record — Martin et al. 2025
+
+> Martin, B., Huveneers, C., Reeves, S. & Baring, R. (2025). Reviving shellfish reef socio-ecological histories for modern management and restoration. _Ocean & Coastal Management_ 261:107540.
+
+Digitised from the paper's supplementary table. Filters applied: _O. angasi_ — high-confidence records, ≤1950 or undated only. _P. dolabrata_ and _M. meridianus_ — high-confidence, **no date cutoff** (too few records to filter further — these two species' historic layer spans into the 1990s, not just pre-1950s).
+
+### Historical record — Gillies et al. 2018
+
+> Gillies, C.L., et al. (2018). Australian shellfish ecosystems: Past distribution, current status and future direction. _PLoS ONE_ 13(2):e0190914.
+
+SA bounding-box subset of the paper's Figshare dataset. Species are not differentiated (_O. angasi_ and _S. glomerata_ combined).
+
+### Community science — iNaturalist (all five species)
+
+**All five iNaturalist layers are filtered to observations the observer annotated "Alive"** under iNaturalist's Life Stage / Alive-or-Dead field — not just species presence, but presence of a _living_ animal. This excludes the large volume of dead-shell-on-the-beach photos that otherwise dominate bivalve records on the platform, and it is a real annotation field, not a heuristic filter Eyrelab invented. Quality grade is mixed (research grade + needs-ID) rather than research-grade-only, since the "Alive" annotation is independent of ID consensus.
+
+Current counts (as of July 2026 — check the live map's layer panel for anything more recent):
+
+| Species          | n     | Date range | Note                                                                                                   |
+| ---------------- | ----- | ---------- | ------------------------------------------------------------------------------------------------------ |
+| _O. angasi_      | 28    | 2024–2026  | Down from an unfiltered ~4,400                                                                         |
+| _M. meridianus_  | 24    | 2021–2026  | Down from an unfiltered ~764                                                                           |
+| _P. dolabrata_   | 37    | 2013–2026  | Down from an unfiltered ~3,533                                                                         |
+| _Katelysia_ spp. | **3** | 2025       | ⚠ Too few records to support any distribution or density claim — three individual sightings, not a map |
+| _E. bifrons_     | 49    | 2013–2026  | Down from an unfiltered ~1,224                                                                         |
+
+**This is a real limitation, not a data-quality bug to fix later:** iNaturalist is photo-based, and underwater photography is a niche, expensive skill — most bivalve observations on the platform are dead shells found on a beach, which is exactly what "Alive" filtering is designed to exclude. Low counts here reflect _annotation coverage_, not necessarily species scarcity — a real live sighting can be missing simply because nobody applied the tag.
+
+### Marine parks — State Marine Park Network (DEW)
+
+South Australia's 19 marine parks, DEW / data.sa.gov.au, CC BY 4.0 AU. The source data ships 31 polygon fragments across those 19 parks (same rack plan per park, no zone-type attribute supplied) — dissolved to one boundary per park and simplified (~95% coordinate reduction) for load performance.
+
+**This layer shows outer park boundaries only.** Internal zoning (Sanctuary Zone, Habitat Protection Zone, Restricted Access Zone, General Managed Use Zone) is not represented in the source data and is not shown — do not use this layer to infer what activity is or isn't permitted inside a given park. Click a park for its gazettal dates, not its activity rules.
+
+### Aquaculture leases — PIRSA
+
+Oyster and mussel aquaculture lease polygons, PIRSA / data.sa.gov.au, CC BY 3.0 AU (601 oyster, 68 mussel). Solid fill = Active; dashed outline = Application/Pending/Rejected. A lease boundary is a licensing polygon, not an indicator of on-water stocking density.
+
+### Reference layers
+
+- **Benthic habitat** — [Seamap Australia](https://seamapaustralia.org) National Benthic Habitat Layer (WMS).
+- **Seabed sediment** — [AusSeabed](https://www.ausseabed.gov.au) / Geoscience Australia (WMS, clipped to the SA bounding box but not the precise coastline).
+
+---
+
+## Limitations
+
+- Survey coverage is opportunistic, not systematic — absence from the map does not mean absence in the water.
+- Field and community sighting data added via the in-app tool is stored in browser local storage; clearing cache deletes unsaved entries that haven't been committed to the HTML source (see "Updating field data" below).
+- Historical coordinates (Martin, Gillies) are digitised approximations, not surveyed positions.
+- Gillies harvest data does not differentiate _O. angasi_ from _S. glomerata_.
+- The seabed sediment layer is clipped to the SA bounding box, not the precise coastline.
+- iNaturalist "Alive" filtering depends on the observer having applied that annotation — it isn't retroactive, so low counts (see _Katelysia_, above) reflect annotation coverage as much as species scarcity.
+- Marine park boundaries are outer boundary only — no internal zoning shown.
+- The `nativeMussel` field is taxonomically unresolved pending voucher specimens (candidates: _Brachidontes erosus_, _B. rostratus_, _Trichomya hirsuta_, _Mytilus galloprovincialis_).
 
 ---
 
 ## File structure
 
 ```
-gulf-beds/
-├── oyster_site_map.html              # Main map (self-contained, open in browser)
-├── README.md                         # This file
-│
-├── data/
-│   ├── field_surveys/
-│   │   └── field_surveys_eyre_lab.csv         # Eyre Lab dive survey records
-│   │
-│   ├── historical/
-│   │   ├── martin_2025_shellfish_reef_sites.csv   # Full mmc2.xlsx table (142 sites)
-│   │   ├── gillies_2018_harvest_SA.csv            # SA harvest evidence (n=70, tiered)
-│   │   ├── gillies_2018_aqua_SA.csv               # SA aquaculture locations (n=7)
-│   │   └── gillies_2018_names_SA.csv              # SA oyster place names (n=7)
-│   │
-│   └── citizen_science/
-│       └── inat_ostrea_angasi_research_grade.csv  # iNaturalist research-grade obs
-│
-└── source_exports/
-    └── observations-753365.csv       # Original iNaturalist export (unmodified)
+South-Australia-Shellfish-Map/
+├── index.html                      # Main map — self-contained, open in browser
+├── README.md                       # This file
+└── data/
+    ├── inat_angasi.js              # iNaturalist O. angasi, "Alive"-annotated only
+    ├── inat_hammerOyster.js        # iNaturalist M. meridianus, "Alive"-annotated only
+    ├── inat_razorfish.js           # iNaturalist P. dolabrata, "Alive"-annotated only
+    ├── inat_cockle.js              # iNaturalist Katelysia spp., "Alive"-annotated only (n=3)
+    ├── inat_scallop.js             # iNaturalist E. bifrons, "Alive"-annotated only
+    ├── aquaculture_leases.js       # PIRSA aquaculture lease polygons (344 KB)
+    ├── marine_parks.js             # DEW State Marine Park Network, 19 dissolved polygons (452 KB)
+    ├── seabed_SA.py                # Processing script: clips Natural Earth coastline to SA bbox
+    └── ne_10m_coastline (1)/       # Source shapefile for seabed_SA.py
 ```
 
-> **Tip:** Move the CSVs into this structure. The `oyster_site_map.html` file has all data embedded — the CSVs are for external reference and re-processing only.
+Each `data/*.js` file is loaded as a plain `<script>` tag and registered in a try/catch wrapper — a missing file disables its checkbox in the Layers panel rather than crashing the page.
+
+There is no `change_records.js` in this repo. The Change & Disturbance layer was removed in July 2026 (see "How the map is organised," above) and its data files deleted, not just unlinked.
 
 ---
 
 ## Updating field data
 
-Field survey data is stored in two places:
+New sites added via the **+ Report sighting** / field survey UI save to browser local storage only. To commit them permanently:
 
-1. **In the browser** — new sites added via the map UI are saved to browser local storage. This is the live working version.
-2. **In the HTML source** — the `DEFAULT_SITES` array (search for `const DEFAULT_SITES`) is the seed dataset that loads if no browser storage is found.
+1. Add/edit sites as normal in the live map.
+2. Open browser DevTools → Application → Local Storage → find the relevant `sa-bivalve-*` key.
+3. Copy the JSON value and paste it into the corresponding `DEFAULT_*` array in `index.html`.
+4. Commit the updated HTML.
 
-To commit new field data to the source:
-
-1. Open the map and use the UI to add/edit sites as normal.
-2. Open browser DevTools → Application → Local Storage → find the `sa-bivalve-sites-v3` key.
-3. Copy the JSON value.
-4. Paste it into `DEFAULT_SITES` in `oyster_site_map.html` (replacing the existing array).
-5. Commit the updated HTML.
-
-> **Warning:** Clearing browser cache will delete any sites added via the UI that haven't been committed to the HTML source.
-
----
-
-## Data caveats
-
-- **Coordinate precision:** Historical coordinates from Martin et al. 2025 and Gillies et al. 2018 are digitised approximate positions — do not interpret at fine spatial scales.
-- **Taxonomic flag:** The `nativeMussel` field is unresolved. Voucher specimens are needed to determine whether records represent _Brachidontes erosus_, _B. rostratus_, _Trichomya hirsuta_, or _Mytilus galloprovincialis_ — all formally recognised SA ecosystem-forming species (Gillies et al. 2018 Table 1).
-- **iNaturalist:** Records represent presence only. Some may be cultivated/aquaculture specimens. Observer identity can be verified via the individual observation link.
-- **Survey coverage:** Field sites reflect access and opportunity, not a systematic survey design. Absence of a location from the map does not imply no bivalves are present there.
-- **Substrate layer:** The AusSeabed sediment layer is clipped to the SA bounding box but not to the precise SA coastline.
+To refresh an iNaturalist layer with a new export: filter to "Alive" annotation on iNaturalist before exporting, convert to the `[lat, lng, id, YYYYMMDD, observer]` array format used in the existing `data/inat_*.js` files, and replace the file. Watch the variable name — it does not always match the filename (`inat_hammerOyster.js` exports `INAT_HAMMER`, not `INAT_HAMMEROYSTER`).
 
 ---
 
 ## Built with
 
 - [Leaflet.js](https://leafletjs.com/) 1.9.4 — map framework
-- [Leaflet.MarkerCluster](https://github.com/Leaflet/Leaflet.markercluster) 1.5.3 — iNaturalist cluster layer
-- [Esri World Imagery](https://www.arcgis.com/) — satellite basemap
-- [Esri Ocean Basemap](https://www.arcgis.com/) — ocean/bathymetry basemap (GEBCO, NOAA)
-- [Seamap Australia](https://seamapaustralia.org/) — benthic habitat WMS
-- [AusSeabed](https://www.ausseabed.gov.au/) — seabed sediment samples WMS
-
-Map development assisted by Claude (Anthropic).
+- [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) 1.5.3 — clustering for iNaturalist and Lindsey layers
+- Esri World Imagery — satellite basemap
+- Esri Ocean Basemap (GEBCO, NOAA, National Geographic, DeLorme, HERE, Geonames.org) — ocean/bathymetry basemap
+- [Seamap Australia](https://seamapaustralia.org) — benthic habitat WMS
+- [AusSeabed](https://www.ausseabed.gov.au) — seabed sediment WMS
+- OpenStreetMap contributors — place labels and coastline reference
 
 ---
 
-## Credits
+## Organisation
 
-**Eyre Lab for Restoration Ecology** — [eyrelab.org](https://www.eyrelab.org/)
+[Eyrelab](https://www.eyrelab.org/ourmission) is a registered environmental charity on the Eyre Peninsula, South Australia, repairing degraded marine ecosystems through science-led, community-driven shellfish reef restoration, while empowering young people through hands-on marine science and connecting communities, Traditional Owners, researchers, and industry around shared environmental outcomes.
 
-Field surveys: Brian McQuillan, Manny Katz  
-Data sources: iNaturalist community contributors, Martin et al. 2025, Gillies et al. 2018  
-25 Reefs Project data: OzFish Unlimited, The Nature Conservancy Australia, SARDI
+**Emmanuel "Manny" Katz** — Founder & Director, Eyrelab.
+**Brian Arruda** — Researcher, Eyrelab; lead developer and steward of this map.
 
 ---
 
 ## License
 
-Field survey data © Eyre Lab for Restoration Ecology.  
-Historical data reproduced under academic fair use — cite original papers if used in publications.  
-iNaturalist data: individual observation licenses vary (see `license` column in CSV); most are CC-BY or CC-BY-NC.
+Field survey data © Eyrelab. Historical data reproduced under academic fair use — cite the original papers if used in publication. iNaturalist data licensing varies by observation (mostly CC-BY or CC-BY-NC) — verify via the individual observation link before reuse. Marine park data CC BY 4.0 AU (DEW). Aquaculture lease data CC BY 3.0 AU (PIRSA).
 
 ---
 
-_Last updated: June 2026_
+_Last updated: July 2026_
